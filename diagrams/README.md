@@ -14,23 +14,31 @@ The steps are as follows:
 
 ## MySQL Workbench
 
+Used to transfer the meaningful merges from GitHub issues to a diagram that is easily digestible for users.
+
 1. **Create a New Layer:** Create a new layer for the module in the EER diagram.
-   * *Note:* The layer color should have low saturation and avoid bright tones.
-2. **Create a Table:** Next, create your table. 
+   * *Note:* The layer color should have low saturation and avoid bright tones. Keep it visually distinct from other modules.
 
-   **Table names must follow this format:**
-   * Standard format: 
-     `[table name in notebook]`
-   * If the table name is reused, append the module name: 
-     `[table name in notebook]_[module]`
-   * If both the table name and module are identical to an existing one, append the specific use case or function change: 
-     `[table name in notebook]_[module]_[use case]`
+2. **Create or Update a Table:** * **If the table is new:** Create your table. 
+     **Table names must follow this format:**
+     * Standard format: `[table name in notebook]`
+     * If the table name is reused, append the module name: `[table name in notebook]_[module]`
+     * If both the table name and module are identical to an existing one, append the specific use case or function change: `[table name in notebook]_[module]_[use case]`
+   * **If the table already exists:** Simply append the new columns discovered during your module analysis to the existing table. Do not duplicate the table.
+   * **Data Types:** Column data types should match the spreadsheet example from your analysis (Example Issue 1.1).
 
-   **Columns data type should be the same type as the spreadsheet example** (Example Issue 1.1)
+3. **Define Relationships (PKs & FKs):** * Key formatting: All keys must be in `ALL_CAPS`.
+   * **Primary Key (PK):** The first instance or origin of a column is the PK.
+   * **Foreign Key (FK):** The table being created from a PK contains the FKs. *(Note: FKs can reference other FKs depending on data flow).*
+   * **Drawing the Relationship:** Use the relationship tools on the left toolbar in Workbench (e.g., `1:n Non-Identifying Relationship`). **Important:** Always click the table receiving the Foreign Key (the child) FIRST, then click the table with the Primary Key (the parent).
 
-3. **Add Merges:** * Keys must be in `ALL_CAPS`.
-   * The first instance of a column is the Primary Key (PK).
-   * The table being created from a PK contains the Foreign Keys (FKs). *Note: FKs can reference other FKs.*
+---
+
+## Finalizing & Exporting
+
+1. **Save the Model:** Save your changes directly to the `.mwb` file located at `[Insert File Path to .mwb here]`.
+2. **Export an Image:** Export a `.png` or `.pdf` of your updated EER diagram layer. You will need to attach this image to your GitHub Issue/Pull Request to prove your changes.
+3. **Commit Changes:** Ensure the updated `.mwb` file is included in your Pull Request alongside your documentation.
 
 ## Example Issue
 
